@@ -4,7 +4,7 @@
   "description": "A job application platform for an organization",
   "main": "index.js",
   "scripts": {
-    "start": "npm index.js",
+    "start": "npm app",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {

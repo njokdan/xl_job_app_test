@@ -1,6 +1,6 @@
 //jshint esversion:6
 const express = require("express");
-const Post = require("../models/posts");
+const JobPost = require("../models/posts");
 const router = express.Router();
 const { ensureAuthenticated } = require("../config/auth");
 

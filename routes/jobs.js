@@ -53,7 +53,7 @@ router.get("/jobs", function (req, res) {
 });
 
 //post req for posts made by users
-router.jobpost("/compose", function (req, res) {
+router.post("/compose", function (req, res) {
     const { title, content, category } = req.body;
     const loggedUser = req.user.fname + " " + req.user.lname;
     const loggedUserId = req.user.id;
