@@ -4,6 +4,7 @@ const router = express.Router();
 const manage = require("../routes/manage");
 const category = require("../routes/category");
 const { ensureAuthenticated } = require("../config/auth");
+const { v4: uuidv4 } = require('uuid');
 
 //model
 const Post = require("../models/posts");
@@ -43,7 +44,7 @@ router.get("/posts", function (req, res) {
 
 //post req for posts made by users
 router.post("/compose", function (req, res) {
-    const { title, content, category } = req.body;
+    const { jobtitle, jobdescription, jobcategory, jobllevel } = req.body;
     const loggedUser = req.user.fname + " " + req.user.lname;
     const loggedUserId = req.user.id;
     let errors = [];
@@ -60,15 +61,17 @@ router.post("/compose", function (req, res) {
 
     if (errors.length > 0) {
         res.render("compose", {
-            errors, title,
+            errors, jobtitle,
             content, category, currentUser: req.user
         });
     } else {
 
         const post = new Post({
-            title,
-            content,
-            category,
+            job_title: jobtitle,
+            job_unique_id: uuidv4(),
+            job_description: jobdescription,
+            job_category: jobcategories,
+            job_level: joblevel,
             name: loggedUser,
             userId: loggedUserId
         });
@@ -78,7 +81,7 @@ router.post("/compose", function (req, res) {
                 errors.push("Your blog post did not save");
             } else {
                 errors.push({ msg: "Blog post saved" });
-                res.render("compose", { errors, title, content, category, currentUser: req.user });
+                res.render("compose", { errors, jobtitle, jobdescription, jobcategory, joblevel, currentUser: req.user });
                 //  res.redirect("/manage/compose");
             }
         });

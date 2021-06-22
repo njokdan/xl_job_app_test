@@ -1,1 +1,10 @@
-<h1>Job Lists</h1>
+<!-- //all posts -->
+<% jobposts.forEach(function(jobpost) { %>
+    <div class="container blog-post">
+    <h1 class="blg-tle"><%= jobpost.job_title %></h1>
+    <p class="info" style="color: grey; font-style: italic;"><%= jobpost.date %> || Posted by <%= jobpost.name  %>  </p>
+    <p class="blg-cnt"><%= jobpost.jobdescription.substring(0, 300) + "..." %></p>
+    <p ><a style="color: green;" href="/articles/singlepost/<%= post._id%>">Read More ></a></p>
+    <hr class="post-brk" style=" border: 0.01px solid grey">
+    </div>
+<%})%>
