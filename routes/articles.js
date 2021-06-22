@@ -44,17 +44,17 @@ router.get("/posts", function (req, res) {
 
 //post req for posts made by users
 router.post("/compose", function (req, res) {
-    const { jobtitle, jobdescription, jobcategory, jobllevel } = req.body;
+    const { jobtitle, jobdescription, jobcategory, joblevel } = req.body;
     const loggedUser = req.user.fname + " " + req.user.lname;
     const loggedUserId = req.user.id;
     let errors = [];
 
-    if (!title || !content || !category) {
+    if (!jobtitle || !jobdescription || !jobcategory || !joblevel) {
         errors.push({ msg: "Please fill all fields" });
     }
 
-    if (content) {
-        if (content.length > 2000) {
+    if (jobdescription) {
+        if (jobdescription.length > 2000) {
             errors.push({ msg: "Post is longer than 1000 characters" });
         }
     }
@@ -62,7 +62,7 @@ router.post("/compose", function (req, res) {
     if (errors.length > 0) {
         res.render("compose", {
             errors, jobtitle,
-            content, category, currentUser: req.user
+            jobdescription, jobcategory, currentUser: req.user
         });
     } else {
 
@@ -97,18 +97,19 @@ const hello = "hi";
 router.post("/edit/:id", function (req, res) {
     const edit = req.params.id;
     console.log(req.params.id);
-    const { title, content, category } = req.body;
+    const { jobtitle, jobdescription, jobcategory } = req.body;
 
     let errors = [];
 
-    if (!title || !content || !category) {
+    if (!jobtitle || !jobdescription || !jobcategory || !joblevel) {
         errors.push({ msg: "Please fill all fields" });
     }
 
     Post.updateOne({ _id: edit }, {
-        title,
-        content,
-        category
+        jobtitle,
+        jobdescription,
+        jobcategory,
+        joblevel
     }, { $set: req.body }, function (err) {
         if (err) {
             console.log("didnt update");
