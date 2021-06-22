@@ -1,0 +1,81 @@
+<div class="jumbotron main-jumbo">
+  <div class="container-fluid">
+    <h1 class="main-header">Learn about topics you care about.</h1>
+    <p class="subheader">Farming contents specially curated for farmers by farmers.</p>
+  </div>
+  <!--div class="container mt-5">
+    <nav class="navbar navbar-expand-lg navbar-light bg-white">
+      <a class="navbar-brand" href="/users/profile" >Profile</a>
+      <div style="margin-right: 20%;">
+        <a href="/articles/me/stories"><button type="button" class="btn btn-outline-secondary">Your stories</button></a>
+        <a href="/manage/compose"><button type="button" class="btn btn-outline-success">Write a story</button></a>
+      </div>
+    </nav>
+  </div-->
+  
+  <form>
+    <div class="container-sm mt-5 mb-5 form">
+      <div class="form-group row">
+        <div class="col-sm-12">
+          <input type="password" class="form-control" id="inputPassword" placeholder="Search Resources" readonly>
+        </div>
+      </div>  
+      <button type="submit" class="btn btn-success">Find Text</button>
+      <button type="submit" class="btn btn-success">Find Videos</button>
+  </form>
+
+  <div class="btn-container container-fluid">
+    <a href="/category/health"><button class="btn btn-outline-primary topic-btn">Health</button></a>
+    <a href="/category/food"><button class="btn btn-outline-danger topic-btn">Food</button></a>
+    <a href="/category/technology"><button class="btn btn-outline-dark topic-btn">Technology</button></a>
+    <a href="/category/music"><button class="btn btn-outline-success topic-btn">Music</button></a>
+    <a href="/category/business"><button class="btn btn-outline-primary topic-btn">Business</button></a>
+    <a href="/category/productivity"><button class="btn btn-outline-primary topic-btn">Productivity</button></a>
+    <a href="/category/culture"><button class="btn btn-outline-warning topic-btn">Culture</button></a>
+    <a href="/category/fashion"><button class="btn btn-outline-info topic-btn">Fashion</button></a>
+    <a href="/category/science"><button class="btn btn-outline-dark topic-btn">Science</button></a>
+    <a href="/category/agric_technologies"><button class="btn btn-outline-primary topic-btn">Agricultural Technologies</button></a>
+    <a href="/category/mordern_agricultural_practices"><button class="btn btn-outline-primary topic-btn">Mordern Agricultural Practices</button></a>
+    <a href="/category/horticulture"><button class="btn btn-outline-danger topic-btn">Horticulture</button></a>
+    <a href="/category/animal_production"><button class="btn btn-outline-dark topic-btn">Animal Production</button></a>
+    <a href="/category/crop_production"><button class="btn btn-outline-success topic-btn">Crop Production</button></a>
+    <a href="/category/agric_business"><button class="btn btn-outline-primary topic-btn">Agric Business</button></a>
+    <a href="/category/farm_mechaniztion"><button class="btn btn-outline-primary topic-btn">Farm Mechanization</button></a>
+    <!-- <a href="/category/culture"><button class="btn btn-outline-warning topic-btn">Culture</button></a>
+    <a href="/category/fashion"><button class="btn btn-outline-info topic-btn">Fashion</button></a>
+    <a href="/category/science"><button class="btn btn-outline-dark topic-btn">Science</button></a> -->
+  </div>
+</div>
+
+<% if(!currentUser) { %>
+<div class="container" style="text-align: center; padding-top: 3px; padding-bottom: 50px;">
+  <a href="/users/register"><button type="button" class="btn btn-success btn-lg"
+      style="padding-left: 70px; padding-right: 70px; font-weight: bold;">Get started</button></a>
+  <p style="padding-top: 10px;">Already have an account? <a href="/users/signin" style="color: green">Sign in</a></p>
+</div>
+<% } %>
+
+
+<div class="container-fluid cnt-subwrite">
+  <div class="row index-row">
+    <div class="col-sm">
+      <img src="/images/reading2.png" width="200" height="200">
+      <h1 class="subwrite">Read amazing content</h1>
+      <p class=" para">Write about something you care about. It doesnt matter how long or short it is. express yourself
+        anyhow you want through words.</p>
+    </div>
+
+    <div class="col-sm">
+      <img src="/images/grow1.png" width="200" height="200">
+      <h1 class="subwrite">Grow your audience</h1>
+      <p class=" para">Write about something you care about. It doesnt matter how long or short it is. express yourself
+        anyhow you want through words.</p>
+    </div>
+    <div class="col-sm">
+      <img src="/images/express1.png" width="200" height="200">
+      <h1 class="subwrite">Express yourself</h1>
+      <p class=" para">Write about something you care about. It doesnt matter how long or short it is. express yourself
+        anyhow you want through words.</p>
+    </div>
+  </div>
+</div>

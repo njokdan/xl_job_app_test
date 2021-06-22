@@ -1,0 +1,10 @@
+<!-- //all posts -->
+<% posts.forEach(function(post) { %>
+    <div class="container blog-post">
+    <h1 class="blg-tle"><%= post.title %></h1>
+    <p class="info" style="color: grey; font-style: italic;"><%= post.date %> || Posted by <%= post.name  %>  </p>
+    <p class="blg-cnt"><%= post.content.substring(0, 300) + "..." %></p>
+    <p ><a style="color: green;" href="/articles/singlepost/<%= post._id%>">Read More ></a></p>
+    <hr class="post-brk" style=" border: 0.01px solid grey">
+    </div>
+<%})%>

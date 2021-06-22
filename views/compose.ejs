@@ -1,0 +1,46 @@
+<h1 class="text-center mb-3 mt-5">Compose</h1>
+<%- include ("partials/messages"); %>
+<form action="/articles/compose" method="POST">
+  <div class="container-sm mt-5 form">
+
+<div class="form-group">
+    <label for="exampleInputTitle1">Title</label>
+    <input type="title"
+     class="form-control" 
+     id="exampleInputTitle1" 
+     placeholder="Enter Title"
+     name="title"
+    value="<%= typeof title != 'undefined' ? title : '' %>"
+     >
+  </div>
+
+  <div class="form-group">
+    <label for="exampleInputContent1">Content</label>
+    <textarea class="form-control" 
+    id="exampleFormControlTextarea1" 
+    name="content" 
+    placeholder="Enter Content"
+     rows="3"
+     value="<%= typeof content != 'undefined' ? content: '' %>" ></textarea>
+    
+  </div>
+
+  <div class="form-group">
+    <label for="exampleFormControlSelect1">Category</label>
+    <select class="form-control" id="exampleFormControlSelect1" name="category" value="<%= typeof category!= 'undefined' ? category: '' %>">
+      <option value="" selected disabled hidden>-- Select category --</option>
+      <option value="health">Health</option>
+      <option value="science">Science</option>
+      <option value="business">Business</option>
+      <option value="technology">Technology</option>
+      <option value="food">Food</option>
+      <option value="productivity">Productivity</option>
+      <option value="culture">Culture</option>
+      <option value="fashion">Fashion</option>
+      
+    </select>
+  </div>
+  
+  <button type="submit" class="btn btn-success" style="margin-top:20px;">Submit</button>
+</div>
+</form>

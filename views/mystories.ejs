@@ -1,0 +1,28 @@
+<% if (posts.length > 0) { %>
+<% posts.forEach(function(post) { %>
+    <div class="container blog-post">
+    <h1 class="blg-tle"><%= post.title %></h1>
+    <p class="info" style="color: grey; font-style: italic;"><%= post.date %> || Posted by <%= post.name  %>  </p>
+    <p class="blg-cnt"><%= post.content.substring(0, 300) + "..." %></p>
+    <p ><a style="color: green;" href="/articles/singlepost/<%= post._id%>">Read More ></a></p>
+    <a href="/manage/edit/<%= post._id %>"><button type="button" class="btn btn-light">Edit</button></a>
+    <a href="/manage/delete/<%= post._id %>"><button type="button" class="btn btn-dark">Delete</button></a>
+    <hr class="post-brk" style=" border: 0.01px solid grey">
+    </div>
+<%})%>
+
+<% } else { %>
+<!-- when there is no post this displays -->
+<div class="container" style="margin: auto;">
+  <div class="row">
+    <div class="col-sm" style="padding-top: 6rem;">
+    <h1 class="display-4"> Hello!  <%= firstname %>  </h1>
+    <p  class="lead" style="color: rgb(85, 82, 82);" style="padding-bottom: 5rem;">You have not written any story yet. We can not wait to read and share your stories. Want to share beautiful experiences? click the button below.</p>
+    <a class="btn btn-outline-success btn-lg" href="/manage/compose" role="button">Write a story</a>
+    </div>
+    <div class="col-sm">
+     <img style="padding-top: 2rem;" src="/images/thinking.png" width="400" height="400" >
+    </div>
+  </div>
+  </div>
+  <% } %>

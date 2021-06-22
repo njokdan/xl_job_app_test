@@ -1,0 +1,30 @@
+ <h1 style="text-align: center; text-transform: uppercase; font-style: italic; font-size: 4rem; padding-top: 2rem; text-decoration: underline;"> <%= category %></h1>
+
+<% if (posts.length > 0) { %>
+ <% posts.forEach(function(post) { %>
+
+    <div class="container-fluid blog-post">
+    <h1 class="blg-tle"><%= post.title %></h1>
+    <p class="info" style="color: grey; font-style: italic;"><%= post.date %> || Posted by <%= post.name  %> </p>
+    <p class="blg-cnt"><%= post.content.substring(0, 300) + "..." %></p>
+    <p><a style="color: green;" href="/articles/singlepost/<%= post._id%>">Read More ></a></p>
+    <hr class="post-brk" style=" border: 0.01px solid rgb(216, 210, 210); width: 10%;">
+    </div>
+<%})%>
+
+<!-- when there is no post in the category selected, this displays -->
+<% } else { %>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm" style="padding-top: 6rem;">
+      <h1 class="display-4" style="font-family: savoy;"> Hello! </h1>
+      <p  class="lead" style="color: rgb(85, 82, 82);" style="padding-bottom: 5rem;">There is no content for the <%= category %> category. We would love for you to share your story with us. Want to add some?</p>
+      <a class="btn btn-outline-success btn-lg" href="/manage/compose" role="button">Write a story, Let's Pass it on.</a>
+      </div>
+      <div class="col-sm">
+       <img style="padding-top: 2rem;" src="/images/thinking.png" width="400" height="400" >
+      </div>
+    </div>
+    </div>
+
+  <% } %>

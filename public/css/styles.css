@@ -1,0 +1,149 @@
+body{
+    height:100%; 
+    margin:0;
+}
+
+.container-sm {
+    max-width: 1020px;
+    background-color: blue;
+    margin-top: 100px;
+}
+
+.lead {
+    color: red ;
+}
+
+.jumbotron{
+    background-color: white;
+}
+.main-jumbo{
+    padding-bottom: 30px;
+}
+
+.main-header{
+    text-align: center;
+    font-family:  savoy;
+    font-size: 4rem;
+    font-weight: bolder;
+    line-height: 6rem;
+    padding-left:3%;
+    padding-right: 3%;
+    color:green;
+}
+
+.subheader{
+   text-align: center;
+   font-size: 2rem;
+   font-weight: 30px;
+}
+
+.topic-btn{
+    text-align: center;
+}
+
+.btn-container{
+    text-align: center;
+    margin-top: 5%;
+}
+
+.btn-container>a .btn{
+    margin-top: 1%;
+    margin-bottom: 1%;
+}
+
+.navbar{
+    background-color: white;
+}
+
+.navbar-brand{
+    font-family: savoy;
+    font-weight: bold;
+    color: black;
+    font-size: 30px;
+}
+
+.started{
+    font-weight: bold;
+    color: white;
+}
+
+.nav-link{
+    color: black;
+}
+.navbar{
+    padding-left:80px;
+     padding-right: 80px;
+}
+.navbar-light .navbar-nav .nav-link {
+    color: black;
+}
+
+.row{
+    text-align: center;
+}
+.form{
+    background-color: white;
+    padding-bottom: 50px;
+    width: 70%;
+    /* padding-left: 50px;
+    padding-right: 50px; */
+}
+
+.subwrite{
+    text-align: center;
+    font-size: 30px;
+    padding-top: 0.01%;
+
+}
+
+.cnt-subwrite{
+    background-color: #A2DC97;/*#F6F1E4;*/
+}
+
+
+.para{
+    text-align: left; 
+    padding-top: 5px;
+    font-size:20px;
+    font-weight: 300;
+    padding-left: 20px;
+    padding-bottom: 50px;
+}
+
+.col-sm {
+    padding-left: 50px;
+    padding-right: 50px;
+}
+
+.page-footer{
+    background-color: black;
+    /* padding-top: 20px;
+    padding-bottom:30px; */
+}
+
+.alert-dismissible { 
+    /* margin-right: 20%; 
+    margin-left: 20%; 
+
+    /* Reset pixel value */ 
+    /* padding-right: 0px;  */ 
+    width: 50%;
+    margin: auto;
+    margin-top: 5%;
+} 
+
+.blog-post{
+   padding-left: 15%;  
+   padding-right: 15%;
+   padding-top: 4%;
+}
+
+.cnt-foot{
+    padding-right: 0;
+    padding-left: 0;
+    padding-top: 5%;
+}
+
+.index-row{
+    padding-top: 5%;
+}
