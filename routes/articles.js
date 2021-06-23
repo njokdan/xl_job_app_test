@@ -70,7 +70,7 @@ router.post("/compose", function (req, res) {
             job_title: jobtitle,
             job_unique_id: uuidv4(),
             job_description: jobdescription,
-            job_category: jobcategories,
+            job_category: jobcategory,
             job_level: joblevel,
             name: loggedUser,
             userId: loggedUserId

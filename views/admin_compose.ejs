@@ -1,6 +1,6 @@
 <h1 class="text-center mb-3 mt-5">Create Job</h1>
 <%- include ("partials/messages"); %>
-<form action="/jobs/jobs" method="POST">
+<form action="/articles/compose" method="POST">
   <div class="container-sm mt-5 form">
 
 <div class="form-group">
@@ -8,7 +8,7 @@
     <input type="title"
      class="form-control" 
      id="exampleInputTitle1" 
-     placeholder="Enter Job Title"
+     placeholder="Enter Title"
      name="jobtitle"
     value="<%= typeof job_title != 'undefined' ? job_title : '' %>"
      >
@@ -21,7 +21,7 @@
     <textarea class="form-control" 
     id="exampleFormControlTextarea1" 
     name="jobdescription" 
-    placeholder="Enter Job Description"
+    placeholder="Enter Description"
      rows="3"
      value="<%= typeof job_description != 'undefined' ? job_description: '' %>" ></textarea>
     
@@ -29,7 +29,7 @@
 
   <div class="form-group">
     <label for="exampleFormControlSelect1">Category</label>
-    <select class="form-control" id="exampleFormControlSelect1" name="jobcategory" value="<%= typeof job_category != 'undefined' ? job_category: '' %>">
+    <select class="form-control" id="exampleFormControlSelect1" name="jobcategory" value="<%= typeof job_category!= 'undefined' ? job_category: '' %>">
       <option value="" selected disabled hidden>-- Select Job category --</option>
       <option value="health">Health</option>
       <option value="science">Science</option>
@@ -38,14 +38,13 @@
       <option value="food">Food</option>
       <option value="productivity">Productivity</option>
       <option value="culture">Culture</option>
-      <option value="fashion">Fashion</option>
-      
+      <option value="fashion">Fashion</option>      
     </select>
   </div>
 
   <div class="form-group">
     <label for="exampleFormControlSelect1">Level</label>
-    <select class="form-control" id="exampleFormControlSelect1" name="joblevel" value="<%= typeof job_level != 'undefined' ? job_level: '' %>">
+    <select class="form-control" id="exampleFormControlSelect1" name="joblevel" value="<%= typeof job_level!= 'undefined' ? job_level: '' %>">
       <option value="" selected disabled hidden>-- Select Job category --</option>
       <option value="beginner">Beginner</option>
       <option value="intermediate">Intermediate</option>

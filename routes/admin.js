@@ -1,6 +1,8 @@
 //jshint esversion:6
 const express = require("express");
+//var cors = require('cors');
 const router = express.Router();
+//router.use(cors());
 const bcrypt = require("bcryptjs");
 const passport = require("passport");
 const { ensureAuthenticated } = require("../config/adminAuth");
@@ -11,8 +13,8 @@ const Admin = require("../models/Admin");
 
 
 //user login
-router.get("/admin", (req, res) => res.render("home", { currentUser: req.user }));
-router.get("/admin/signin", (req, res) => res.render("admin_signin", { currentUser: req.user }));
+router.get("/admin", (req, res) => res.render("home", { currentUser: req.admin }));
+router.get("/admin/signin", (req, res) => res.render("admin_signin", { currentUser: req.admin }));
 
 //user register
 router.get("/admin/register", (req, res) => res.render("admin_register", { currentUser: req.user }));
@@ -20,17 +22,17 @@ router.get("/admin/register", (req, res) => res.render("admin_register", { curre
 //user profile
 router.get("/admin/profile", ensureAuthenticated, (req, res) => res.render("admin_profile",
   {
-    firstname: req.user.fname,
-    lastname: req.user.lname,
-    email: req.user.email,
-    currentUser: req.user
+    firstname: req.admin.fname,
+    lastname: req.admin.lname,
+    email: req.admin.email,
+    currentUser: req.admin
   }));
 
   //get req for user signout
 router.get("/signout", function (req, res, next) {
   req.logout();
   req.flash("success_msg", "You are signed out");
-  res.redirect("/users/signin");
+  res.redirect("/admin/signin");
 });
 
 
@@ -39,7 +41,7 @@ router.get("/signout", function (req, res, next) {
 router.post("/signin", function (req, res, next) {
   passport.authenticate("local", {
     successRedirect: "/",
-    failureRedirect: "/users/signin",
+    failureRedirect: "/admin/signin",
     failureFlash: true
   })(req, res, next);
 });

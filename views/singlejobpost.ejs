@@ -1,0 +1,35 @@
+
+<% jobposts.forEach(function(jobpost) { %>
+    <div class="container-fluid blog-post">
+        <h1 class="blg-tle" style="text-align: center;"><%= jobpost.job_title %></h1>
+    <p class="blg-cnt"><%= jobpost.job_category%></p>
+    <hr>
+    <p class="blg-cnt"><%= jobpost.job_description%></p>
+
+
+    <% if(!currentUser) { %>
+        <li class="nav-item">
+          <a class="nav-link" href="/users/signin">Sign in</a>
+        </li>
+
+
+        <!-- <li class="nav-item btn btn-success btn-sm started">
+          <a class="nav-link started" style="color: white;" href="/users/register">Get Started</a>
+        </li> -->
+        <% } else { %>
+
+        <li class="nav-item btn btn-success btn-sm started">
+          <a class="nav-link started" style=" color: white;" href="/users/apply">Apply Now</a>
+        </li>
+
+        
+        <!-- <li class="nav-item btn">
+          <a href="/users/profile"><img src="/images/person-outline.svg" width="25" height="25"></a>
+        </li> -->
+
+        <% } %>
+
+
+    <p class="info" style="color: grey; font-style: italic; text-align: center;"><%= jobpost.date %> || Posted by <%= jobpost.name  %>  </p>
+    </div>
+<%})%>

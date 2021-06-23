@@ -10,6 +10,7 @@ const { ensureAuthenticated } = require("../config/auth");
 router.get("/", function (req, res) {
 
     JobPost.find({}, function (err, jobposts) {
+        console.log(jobposts);
         res.render("index",
             { jobposts: jobposts, currentUser: req.user }
         );

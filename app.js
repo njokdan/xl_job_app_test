@@ -1,6 +1,7 @@
 //jshint esversion:6
 require('dotenv').config();
 const express = require("express");
+var cors = require('cors');
 const expressLayout = require("express-ejs-layouts");
 const mongoose = require("mongoose");
 const flash = require("connect-flash");
@@ -15,6 +16,7 @@ const MongoStore = require('connect-mongo')(session);
 const passport = require("passport");
 
 const app = express();
+app.use(cors());
 
 //passport config
 require('./config/passport')(passport);
@@ -26,7 +28,12 @@ const db = require("./config/key").MongoURI;
 //connect to mongoose
 mongoose.connect(db, {useNewUrlParser: true, useUnifiedTopology: true })
 .then(() => console.log("mongo connected"))
-.catch(err => console.log(err));
+.catch(err => {
+  console.log(err);
+
+  redirect("/users/error");
+
+});
 
 
 //ejs 
@@ -65,6 +72,8 @@ next();
 app.use("/", require("./routes/index"));//for users - applicants
 app.use("/users", require("./routes/users"));
 
+//Jobs
+app.use("/jobs", require("./routes/jobs"));
 
 
 //Admin
@@ -73,8 +82,6 @@ app.use("/admin", require("./routes/admin"));
 // app.use("/getalljobs", require("./routes/getalljobs"));
 
 
-//Jobs
-app.use("/jobs", require("./routes/jobs"));
 
 
 app.use("/articles", require("./routes/articles"));

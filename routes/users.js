@@ -33,6 +33,9 @@ router.get("/signout", function (req, res, next) {
 });
 
 
+// router.get("/error", (req, res) => res.render("error",));
+
+
 
 //post req for user signin
 router.post("/signin", function (req, res, next) {

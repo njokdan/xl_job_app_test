@@ -1,0 +1,48 @@
+<h1 class="text-center mb-3 mt-5">Edit Article</h1>
+<%- include ("partials/messages"); %>
+
+<% posts.forEach(function(post) { %>
+<form action="/articles/edit/<%= post._id %>" method="POST">
+  <div class="container-sm mt-5 form">
+<div class="form-group">
+    <label for="exampleInputTitle1">Title</label>
+    <input type="title"
+     class="form-control" 
+     id="exampleInputTitle1" 
+     placeholder="Enter Title"
+     name="title"
+    value="<%= post.title %>"
+     >
+  </div>
+
+  <div class="form-group">
+    <label for="exampleInputContent1">Content</label>
+    <input type="text" 
+    class="form-control" 
+    id="exampleInputContent1" 
+    placeholder="Enter Content"
+    name="content"
+    value="<%= post.content %>"
+    >
+  </div>
+
+  <div class="form-group">
+    <label for="exampleFormControlSelect1">Category</label>
+    <select class="form-control" id="exampleFormControlSelect1" name="category">
+      <option value="" selected disabled hidden><%= post.category %></option>
+      <option value="health">Health</option>
+      <option value="science">Science</option>
+      <option value="business">Business</option>
+      <option value="technology">Technology</option>
+      <option value="food">Food</option>
+      <option value="productivity">Productivity</option>
+      <option value="culture">Culture</option>
+      <option value="fashion">Fashion</option> 
+    </select>
+  </div>
+  
+  <button type="submit" class="btn btn-success">Submit</button>
+</div>
+</form>
+
+<%})%>

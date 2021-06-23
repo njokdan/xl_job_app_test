@@ -8,7 +8,7 @@ const { v4: uuidv4 } = require('uuid');
 
 //model
 const JobPost = require("../models/jobposts");
-const { jobpost } = require("../routes/manage");
+const { post } = require("../routes/manage");
 
 
 
@@ -40,6 +40,66 @@ router.get("/jobs/:category", function (req, res) {
 
 });
 
+//post req for posts made by users
+router.post("/jobs", function (req, res) {
+    const uid = uuidv4();
+    //console.log(req.body);
+    const { jobtitle, jobdescription, jobcategory, joblevel } = req.body;
+    const loggedUser = req.user.fname + " " + req.user.lname;
+    const loggedUserId = req.user.id;
+    let errors = [];
+
+    if (!jobtitle || !jobdescription || !jobcategory) {
+        errors.push({ msg: "Please fill all fields" });
+    }
+
+    if (jobdescription) {
+        if (jobdescription.length > 5000) {
+            errors.push({ msg: "Post is longer than 3000 characters" });
+        }
+    }
+
+    if (errors.length > 0) {
+        res.render("compose", {
+            errors, jobtitle,
+            jobdescription, jobcategory, currentUser: req.user
+        });
+    } else {
+
+        const post = new JobPost({
+            job_title:jobtitle,
+            job_unique_id: uid,
+            job_description:jobdescription,
+            job_category:jobcategory,
+            job_level:joblevel,
+            name: loggedUser,
+            userId: loggedUserId
+        });
+
+        // const post = new JobPost({
+        //     jobtitle,
+        //     uid,
+        //     jobdescription,
+        //     jobcategory,
+        //     joblevel,
+        //     name: loggedUser,
+        //     userId: loggedUserId
+        // });
+        //console.log("Post:",post);
+        post.save(function (err) {
+            if (err) {
+                errors.push("Your jobpost did not save");
+            } else {
+                errors.push({ msg: "Jobpost saved" });
+                res.render("compose", { errors, jobtitle, jobdescription, jobcategory, joblevel, currentUser: req.user });
+                //  res.redirect("/manage/compose");
+            }
+        });
+    }
+
+});
+
+
 //view all jobposts
 router.get("/jobs", function (req, res) {
 
@@ -47,6 +107,7 @@ router.get("/jobs", function (req, res) {
         if (err) {
             res.send("Uh Oh");
         } else {
+            console.log("From Db",jobposts);
             res.render("jobs", { jobposts: jobposts, currentUser: req.user });
         }
     });
@@ -54,50 +115,52 @@ router.get("/jobs", function (req, res) {
 
 //post req for posts made by users
 router.post("/compose", function (req, res) {
-    const { title, content, category } = req.body;
+    const { jobtitle, jobdescription, jobcategory, joblevel } = req.body;
     const loggedUser = req.user.fname + " " + req.user.lname;
     const loggedUserId = req.user.id;
     let errors = [];
 
-    if (!title || !content || !category) {
+    if (!jobtitle || !jobdescription || !jobcategory) {
         errors.push({ msg: "Please fill all fields" });
     }
 
-    if (content) {
-        if (content.length > 5000) {
+    if (jobdescription) {
+        if (jobdescription.length > 5000) {
             errors.push({ msg: "Post is longer than 3000 characters" });
         }
     }
 
     if (errors.length > 0) {
         res.render("compose", {
-            errors, title,
-            content, category, currentUser: req.user
+            errors, jobtitle,
+            jobdescription, jobcategory, currentUser: req.user
         });
     } else {
 
-        const post = new Post({
-            job_title,
+        const post = new JobPost({
+            job_title:jobtitle,
             job_unique_id: uuidv4(),
-            job_description,
-            job_category,
-            job_level,
+            job_description:jobdescription,
+            job_category:jobcategory,
+            job_level:joblevel,
             name: loggedUser,
             userId: loggedUserId
         });
-
+        console.log("Post:",post);
         post.save(function (err) {
             if (err) {
                 errors.push("Your jobpost did not save");
             } else {
                 errors.push({ msg: "Jobpost saved" });
-                res.render("compose", { errors, job_title, job_description, job_category, job_level, currentUser: req.user });
+                res.render("compose", { errors, jobtitle, jobdescription, jobcategory, joblevel, currentUser: req.user });
                 //  res.redirect("/manage/compose");
             }
         });
     }
 
 });
+
+
 
 const hello = "hi";
 
@@ -107,18 +170,18 @@ const hello = "hi";
 router.post("/edit/:id", function (req, res) {
     const edit = req.params.id;
     console.log(req.params.id);
-    const { title, content, category } = req.body;
+    const { jobtitle, jobdescription, jobcategory, joblevel } = req.body;
 
     let errors = [];
 
-    if (!title || !content || !category) {
+    if (!jobtitle || !jobdescription || !jobcategory) {
         errors.push({ msg: "Please fill all fields" });
     }
 
     Post.updateOne({ _id: edit }, {
-        title,
-        content,
-        category
+        job_title:jobtitle,
+        job_description:jobdescription,
+        job_category:jobcategory
     }, { $set: req.body }, function (err) {
         if (err) {
             console.log("didnt update");
