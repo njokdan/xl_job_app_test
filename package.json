@@ -2,7 +2,7 @@
   "name": "xl_job_app_test",
   "version": "1.0.0",
   "engines": {
-    "node": "14.15.0"
+    "node": ">=14"
   },
   "description": "A job application platform for an organization",
   "main": "app.js",
